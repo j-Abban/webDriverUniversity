@@ -1,0 +1,14 @@
+{
+  "name": "webdriveruniversity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "navigation.cy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Justice Abban",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.11.0"
+  }
+}
