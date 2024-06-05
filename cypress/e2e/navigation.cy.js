@@ -1,4 +1,15 @@
 describe('Navigation to Contact Us Page Test', () => {
+    before(() => {
+         // Ignore specific uncaught exceptions
+    Cypress.on('uncaught:exception', (err, runnable) => {
+        // Ignore known issues in the application
+        if (err.message.includes('<') || err.message.includes('select')) {
+            return false;
+        }
+        // Allow othe errors to fail the test
+        return true;
+        });
+    });
     beforeEach(() => {
     // Visit the website
       cy.visit('http://webdriveruniversity.com/');
@@ -26,6 +37,19 @@ describe('Navigation to Contact Us Page Test', () => {
         cy.stub(win, 'open').as('windowOpen');
       });
       cy.url().should('include', '/Login-Portal/index.html');
+    });
+
+    it('Should navigate to BUTTON CLICKS', () => {
+      // Click on the login portal link
+      cy.get('#button-clicks').invoke('removeAttr', 'target').click();
+      // Wait for the new window to open and switch to it
+      cy.window().then(win => {
+        cy.stub(win, 'open').as('windowOpen');
+      });
+      // Verify the url of the BUTTON CLICK page
+      cy.url().should('include', '/Click-Buttons/index.html');
+      cy.get('.navbar-brand').should('have.text','WebdriverUniversity.com (Button Clicks)');
+      cy.get('h1').should('have.text','Lets Get Clicking!');
     });
   });
   
