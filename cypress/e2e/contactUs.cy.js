@@ -1,5 +1,5 @@
 describe('Navigation to Contact Us Page Test', () => {
-    beforeEach(() => {
+    before(() => {
     // Visit the website
       cy.visit('http://webdriveruniversity.com/');
   
