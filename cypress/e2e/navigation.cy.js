@@ -1,4 +1,4 @@
-describe('Navigation to Contact Us Page Test', () => {
+describe('Navigation Test - WebDriverUniversity', () => {
     before(() => {
          // Ignore specific uncaught exceptions
     Cypress.on('uncaught:exception', (err, runnable) => {
@@ -18,15 +18,13 @@ describe('Navigation to Contact Us Page Test', () => {
     it('Should navigate to CONTACT US', () => {
       // Click on the Contact Us link
       cy.get('#contact-us').invoke('removeAttr', 'target').click();
-  
       // Wait for the new window to open and switch to it
       cy.window().then(win => {
         cy.stub(win, 'open').as('windowOpen');
       });
-  
       // Assertion to verify the URL of the new window
       cy.url().should('include', '/Contact-Us/contactus.html');
-      cy.get('.section_header').contains('CONTACT US');
+      cy.get('.section_header').should('have.text','CONTACT US');
     });
 
     it('Should navigate to LOGIN PORTAL', () => {
