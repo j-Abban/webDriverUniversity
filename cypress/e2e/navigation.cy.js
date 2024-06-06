@@ -69,7 +69,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
       cy.wait(2000);
     });
 
-    it('should navigate to TO DO LIST ', () => {
+    it('should navigate to TO DO LIST', () => {
       // Click on the "TO DO LIST"
       cy.get('#to-do-list').invoke('removeAttr', 'target').click();
       // Wait for new window to open and switch to it
@@ -85,5 +85,60 @@ describe('Navigation Test - WebDriverUniversity', () => {
      cy.url().should('include','http://webdriveruniversity.com/');
      cy.wait(2000);
     });
+     
+    it('should navigate to PAGE OBJECT MODEL', ()=> {
+      // Click on Page object model
+      cy.get('#page-object-model').invoke('removeAttr', 'target').click();
+      // Wait for new window to open and switch to it
+      cy.window().then(win => {
+      cy.stub(win, 'open').as('windowOpen');
+      });
+      // Verify the url and other element
+      cy.url().should('include','Page-Object-Model/index.html');
+      cy.get('#nav-title').should('have.text', 'WebdriverUniversity.com (Page Object Model)');
+      // Navigate back to the home page
+      cy.go(-1);
+      // Assert that you are on home page
+      cy.url().should('include','http://webdriveruniversity.com/');
+      cy.wait(2000);
+    });
+
+    it('should navigate to ACCORDION & TEXT AFFECTS', () => {
+     // Click on ACCORDION & TEXT AFFECTS
+     cy.get('a[href="Accordion/index.html"]').invoke('removeAttr', 'target').click();
+      // Wait for new window to open and switch to it
+      cy.window().then(win => {
+      cy.stub(win, 'open').as('windowOpen');
+        });
+    // Assert the url and othe element
+    cy.url().should('include','/Accordion/index.html');
+    cy.get('#nav-title').should('have.text', 'WebDriver (Accordion Items & Text Appear)');
+    cy.get('h1').should('have.text', 'Click on One of the Accordian Items Below!');
+     // Navigate back to the home page
+     cy.go(-1);
+     // Assert that you are on home page
+     cy.url().should('include','http://webdriveruniversity.com/');
+     cy.wait(2000);
+    });
+
+    it('should navigate to DROPDOWN, CHECKBOXE(S) & RADIO BUTTON(S)', () => {
+      // Click on ACCORDION & TEXT AFFECTS
+      cy.get('#dropdown-checkboxes-radiobuttons').invoke('removeAttr', 'target').click();
+       // Wait for new window to open and switch to it
+       cy.window().then(win => {
+       cy.stub(win, 'open').as('windowOpen');
+         });
+     // Assert the url and othe element
+     cy.url().should('include','/Dropdown-Checkboxes-RadioButtons/index.html');
+     cy.get('#nav-title').should('have.text', 'WebdriverUniversity.com (Dropdown Menu(s), Checkboxe(s), Radio Button(s))');
+     cy.get('h1').should('have.text', 'Dropdown Menu(s), Checkboxe(s) & Radio Button(s)');
+      // Navigate back to the home page
+      cy.go(-1);
+      // Assert that you are on home page
+      cy.url().should('include','http://webdriveruniversity.com/');
+      cy.wait(2000);
+     });
+
+
   });
   
