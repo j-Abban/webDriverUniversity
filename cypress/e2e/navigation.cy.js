@@ -138,7 +138,5 @@ describe('Navigation Test - WebDriverUniversity', () => {
       cy.url().should('include','http://webdriveruniversity.com/');
       cy.wait(2000);
      });
-
-
   });
   
