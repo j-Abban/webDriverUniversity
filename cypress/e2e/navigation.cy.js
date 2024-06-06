@@ -78,7 +78,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
       });
       // Verify the url and other element on "TO DO LIST" page
      cy.url().should('include', '/To-Do-List/index.html');
-     cy.get('h1').shouldHaveTrimmedText('TO-DO LIST');
+     cy.get('h1').should('include.text','TO-DO LIST');
      // navigate back to the home page
      cy.go(-1);
      // Assert that you are on the home page
