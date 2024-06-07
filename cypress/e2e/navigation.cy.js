@@ -158,7 +158,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
      cy.wait(2000);
      });
 
-     it('should navigate to ACTIONS', () => {
+    it('should navigate to ACTIONS', () => {
       // Click on the ACTIONS
       cy.get('#actions').invoke('removeAttr', 'target').click();
       // Wait for new window to open and switch to it
@@ -172,6 +172,22 @@ describe('Navigation Test - WebDriverUniversity', () => {
       // Navigate back to the home page
       cy.go(-1);
       cy.url().should('include', 'http://webdriveruniversity.com/');
+     });
+
+    it('should navigate to SCROLLING AROUND', () => {
+      // Click on SCROLLING AROUND
+      cy.get('#scrolling-around').invoke('removeAttr', 'target').click();
+      // Wait for new window to open and switch to it
+      cy.window().then(win => {
+      cy.stub(win, 'open').as('windowOpen');
+      });
+     // Assert the url and other element on the page
+     cy.url().should('include', '/Scrolling/index.html');
+     cy.get('#nav-title').should('have.text', '/Scrolling/index.html');
+     cy.get('#main-header').should('have.text', 'Just Scrolling Around!');
+     // Navigate back to the home page
+     cy.go(-1);
+     cy.url().should('include', 'http://webdriveruniversity.com/');
      });
   });
   
