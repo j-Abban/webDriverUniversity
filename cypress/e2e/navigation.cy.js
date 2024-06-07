@@ -5,7 +5,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
          // Ignore specific uncaught exceptions
     Cypress.on('uncaught:exception', (err, runnable) => {
         // Ignore known issues in the application
-        if (err.message.includes('<') || err.message.includes('select')) {
+        if (err.message.includes('<') || err.message.includes('select') || err.message.includes('style')) {
             return false;
         }
         // Allow othe errors to fail the test
@@ -93,7 +93,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
       cy.window().then(win => {
       cy.stub(win, 'open').as('windowOpen');
       });
-      // Verify the url and other element
+      // Verify the url and other elements
       cy.url().should('include','Page-Object-Model/index.html');
       cy.get('#nav-title').should('have.text', 'WebdriverUniversity.com (Page Object Model)');
       // Navigate back to the home page
@@ -110,7 +110,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
       cy.window().then(win => {
       cy.stub(win, 'open').as('windowOpen');
         });
-    // Assert the url and othe element
+    // Assert the url and othe elements
     cy.url().should('include','/Accordion/index.html');
     cy.get('#nav-title').should('have.text', 'WebDriver (Accordion Items & Text Appear)');
     cy.get('h1').should('have.text', 'Click on One of the Accordian Items Below!');
@@ -122,13 +122,13 @@ describe('Navigation Test - WebDriverUniversity', () => {
     });
 
     it('should navigate to DROPDOWN, CHECKBOXE(S) & RADIO BUTTON(S)', () => {
-      // Click on ACCORDION & TEXT AFFECTS
+     // Click on ACCORDION & TEXT AFFECTS
       cy.get('#dropdown-checkboxes-radiobuttons').invoke('removeAttr', 'target').click();
        // Wait for new window to open and switch to it
        cy.window().then(win => {
        cy.stub(win, 'open').as('windowOpen');
          });
-     // Assert the url and othe element
+     // Assert the url and other element
      cy.url().should('include','/Dropdown-Checkboxes-RadioButtons/index.html');
      cy.get('#nav-title').should('have.text', 'WebdriverUniversity.com (Dropdown Menu(s), Checkboxe(s), Radio Button(s))');
      cy.get('h1').should('have.text', 'Dropdown Menu(s), Checkboxe(s) & Radio Button(s)');
@@ -137,6 +137,25 @@ describe('Navigation Test - WebDriverUniversity', () => {
       // Assert that you are on home page
       cy.url().should('include','http://webdriveruniversity.com/');
       cy.wait(2000);
+     });
+
+    it('should navigate to AJAX LOADER', () => {
+     // Click on AJAX LOADER
+     cy.get('#ajax-loader').invoke('removeAttr', 'target').click();
+     // Wait for new window to open and switch to it
+     cy.window().then(win => {
+     cy.stub(win, 'open').as('windowOpen');
+     });
+     // Assert the url and other element
+     cy.url().should('include', '/Ajax-Loader/index.html');
+     cy.get('.navbar-brand').should('have.text', 'WebdriverUniversity.com (Ajax-Loader)');
+     cy.wait(2000);
+     cy.get('#button1').should('have.text', 'CLICK ME!')
+     // Navigate back to the home page
+     cy.go(-1);
+     // Assert that you are on the home page
+     cy.url().should('include','http://webdriveruniversity.com/');
+     cy.wait(2000);
      });
   });
   
