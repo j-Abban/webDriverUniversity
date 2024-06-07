@@ -189,5 +189,21 @@ describe('Navigation Test - WebDriverUniversity', () => {
      cy.go(-1);
      cy.url().should('include', 'http://webdriveruniversity.com/');
      });
+
+     it('should navigate to POPUP & ALERTS', () => {
+      // Click on POPUP & ALERTS
+      cy.get('#popup-alerts').invoke('removeAttr', 'target').click();
+     // Wait for new window to open and switch to it
+     cy.window().then(win => {
+     cy.stub(win, 'open').as('windowOpen');
+     });
+     // Assert the url and other element on the page
+     cy.url().should('include', '/Popup-Alerts/index.html');
+     cy.get('#nav-title').should('have.text', 'WebdriverUniversity.com (Popup & Alerts)');
+     cy.get('#popup-alerts').should('have.text', 'Annoying Popup & Alerts!');
+     // Navigate back to the home page
+     cy.go(-1);
+     cy.url().should('include', 'http://webdriveruniversity.com/');
+     });
   });
   
