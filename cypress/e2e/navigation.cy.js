@@ -157,5 +157,21 @@ describe('Navigation Test - WebDriverUniversity', () => {
      cy.url().should('include','http://webdriveruniversity.com/');
      cy.wait(2000);
      });
+
+     it('should navigate to ACTIONS', () => {
+      // Click on the ACTIONS
+      cy.get('#actions').invoke('removeAttr', 'target').click();
+      // Wait for new window to open and switch to it
+      cy.window().then(win => {
+      cy.stub(win, 'open').as('windowOpen');
+      });
+      // Assert the url and other elements
+      cy.url().should('include', '/Actions/index.html');
+      cy.get('#nav-title').should('have.text', 'WebdriverUniversity.com (Actions)');
+      cy.get('#main-header').should('have.text', 'The Key to Success is to take massive ACTION!');
+      // Navigate back to the home page
+      cy.go(-1);
+      cy.url().should('include', 'http://webdriveruniversity.com/');
+     });
   });
   
