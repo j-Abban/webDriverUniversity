@@ -1,4 +1,4 @@
-import '@testing-library/cypress/add-commands';
+/// <reference types="Cypress" />
 
 describe('Navigation Test - WebDriverUniversity', () => {
     before(() => {
@@ -92,9 +92,10 @@ describe('Navigation Test - WebDriverUniversity', () => {
       // Wait for new window to open and switch to it
       cy.window().then(win => {
       cy.stub(win, 'open').as('windowOpen');
+      cy.wait(3000); 
       });
       // Verify the url and other elements
-      cy.url().should('include','Page-Object-Model/index.html');
+      cy.url().should('include','/Page-Object-Model/index.html');
       cy.get('#nav-title').should('have.text', 'WebdriverUniversity.com (Page Object Model)');
       // Navigate back to the home page
       cy.go(-1);
@@ -206,7 +207,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
      cy.url().should('include', 'http://webdriveruniversity.com/');
      });
      
-    it('', () => {
+    it('should navigate to IFRAME page', () => {
      // Click on IFRAME
      cy.get('#iframe').invoke('removeAttr', 'target').click();
      // Wait for new window to open and switch to it
@@ -215,8 +216,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
       });
      // Assert the url and other element on the page
      cy.url().should('include', '/IFrame/index.html');
-     cy.get('#nav-title').should('WebdriverUniversity.com (IFrame)');
-     cy.get('#nav-title').should('WebdriverUniversity.com (Page Object Model)');
+     cy.get('#nav-title').should('have.text','WebdriverUniversity.com (IFrame)');
         // Navigate back to the home page
      cy.go(-1);
      cy.url().should('include', 'http://webdriveruniversity.com/');
