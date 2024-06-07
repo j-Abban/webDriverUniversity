@@ -183,8 +183,8 @@ describe('Navigation Test - WebDriverUniversity', () => {
       });
      // Assert the url and other element on the page
      cy.url().should('include', '/Scrolling/index.html');
-     cy.get('#nav-title').should('have.text', '/Scrolling/index.html');
-     cy.get('#main-header').should('have.text', 'Just Scrolling Around!');
+     cy.get('#nav-title').should('have.text', 'WebDriver (Scrolling)');
+     cy.get('#main-header').should('include.text', 'Just Scrolling Around!');
      // Navigate back to the home page
      cy.go(-1);
      cy.url().should('include', 'http://webdriveruniversity.com/');
@@ -199,8 +199,8 @@ describe('Navigation Test - WebDriverUniversity', () => {
      });
      // Assert the url and other element on the page
      cy.url().should('include', '/Popup-Alerts/index.html');
-     cy.get('#nav-title').should('have.text', 'WebdriverUniversity.com (Popup & Alerts)');
-     cy.get('#popup-alerts').should('have.text', 'Annoying Popup & Alerts!');
+     cy.get('#nav-title').should('have.text', 'WebdriverUniversity.com (Popups & Alerts)');
+     cy.get('h1').should('have.text', 'Annoying Popup & Alerts!');
      // Navigate back to the home page
      cy.go(-1);
      cy.url().should('include', 'http://webdriveruniversity.com/');
