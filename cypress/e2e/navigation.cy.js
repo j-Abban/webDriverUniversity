@@ -34,7 +34,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
       // Assert that you are on the home page
       cy.url().should('include','http://webdriveruniversity.com/');
       cy.wait(2000);
-    });
+     });
 
     it('Should navigate to LOGIN PORTAL', () => {
       // Click on the login portal link
@@ -84,10 +84,10 @@ describe('Navigation Test - WebDriverUniversity', () => {
      // Assert that you are on the home page
      cy.url().should('include','http://webdriveruniversity.com/');
      cy.wait(2000);
-    });
+     });
      
     it('should navigate to PAGE OBJECT MODEL', ()=> {
-      // Click on Page object model
+     // Click on Page object model
       cy.get('#page-object-model').invoke('removeAttr', 'target').click();
       // Wait for new window to open and switch to it
       cy.window().then(win => {
@@ -110,16 +110,16 @@ describe('Navigation Test - WebDriverUniversity', () => {
       cy.window().then(win => {
       cy.stub(win, 'open').as('windowOpen');
         });
-    // Assert the url and othe elements
-    cy.url().should('include','/Accordion/index.html');
-    cy.get('#nav-title').should('have.text', 'WebDriver (Accordion Items & Text Appear)');
-    cy.get('h1').should('have.text', 'Click on One of the Accordian Items Below!');
+     // Assert the url and othe elements
+     cy.url().should('include','/Accordion/index.html');
+     cy.get('#nav-title').should('have.text', 'WebDriver (Accordion Items & Text Appear)');
+     cy.get('h1').should('have.text', 'Click on One of the Accordian Items Below!');
      // Navigate back to the home page
      cy.go(-1);
      // Assert that you are on home page
      cy.url().should('include','http://webdriveruniversity.com/');
      cy.wait(2000);
-    });
+     });
 
     it('should navigate to DROPDOWN, CHECKBOXE(S) & RADIO BUTTON(S)', () => {
      // Click on ACCORDION & TEXT AFFECTS
@@ -190,7 +190,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
      cy.url().should('include', 'http://webdriveruniversity.com/');
      });
 
-     it('should navigate to POPUP & ALERTS', () => {
+    it('should navigate to POPUP & ALERTS', () => {
       // Click on POPUP & ALERTS
       cy.get('#popup-alerts').invoke('removeAttr', 'target').click();
      // Wait for new window to open and switch to it
@@ -202,6 +202,22 @@ describe('Navigation Test - WebDriverUniversity', () => {
      cy.get('#nav-title').should('have.text', 'WebdriverUniversity.com (Popups & Alerts)');
      cy.get('h1').should('have.text', 'Annoying Popup & Alerts!');
      // Navigate back to the home page
+     cy.go(-1);
+     cy.url().should('include', 'http://webdriveruniversity.com/');
+     });
+     
+    it('', () => {
+     // Click on IFRAME
+     cy.get('#iframe').invoke('removeAttr', 'target').click();
+     // Wait for new window to open and switch to it
+     cy.window().then(win => {
+     cy.stub(win, 'open').as('windowOpen');
+      });
+     // Assert the url and other element on the page
+     cy.url().should('include', '/IFrame/index.html');
+     cy.get('#nav-title').should('WebdriverUniversity.com (IFrame)');
+     cy.get('#nav-title').should('WebdriverUniversity.com (Page Object Model)');
+        // Navigate back to the home page
      cy.go(-1);
      cy.url().should('include', 'http://webdriveruniversity.com/');
      });
