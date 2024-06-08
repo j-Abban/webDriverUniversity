@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe('Navigation Test - WebDriverUniversity', () => {
+describe('WebDriverUniversity', () => {
     before(() => {
          // Ignore specific uncaught exceptions
     Cypress.on('uncaught:exception', (err, runnable) => {
@@ -173,6 +173,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
       // Navigate back to the home page
       cy.go(-1);
       cy.url().should('include', 'http://webdriveruniversity.com/');
+      cy.wait(2000);
      });
 
     it('should navigate to SCROLLING AROUND', () => {
@@ -189,6 +190,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
      // Navigate back to the home page
      cy.go(-1);
      cy.url().should('include', 'http://webdriveruniversity.com/');
+     cy.wait(2000);
      });
 
     it('should navigate to POPUP & ALERTS', () => {
@@ -205,6 +207,7 @@ describe('Navigation Test - WebDriverUniversity', () => {
      // Navigate back to the home page
      cy.go(-1);
      cy.url().should('include', 'http://webdriveruniversity.com/');
+     cy.wait(2000);
      });
      
     it('should navigate to IFRAME page', () => {
@@ -220,6 +223,24 @@ describe('Navigation Test - WebDriverUniversity', () => {
         // Navigate back to the home page
      cy.go(-1);
      cy.url().should('include', 'http://webdriveruniversity.com/');
+     cy.wait(2000);
+     });
+
+     it('should navigate to HIDDEN ELEMENTS', () => {
+      // Click on the HIDDEN ELEMENTS
+      cy.get('#hidden-elements').invoke('removeAttr', 'target').click();
+      // Wait for new window to open and switch to it
+      cy.window().then(win => {
+      cy.stub(win, 'open').as('windowOpen');
+      });
+      // Assert the url and other element on the page
+      cy.url().should('include', '/Hidden-Elements/index.html');
+      cy.get('#nav-title').should('have.text', 'WebdriverUniversity.com (Hidden Elements)');
+      cy.get('#main-header').should('include.text', 'Hidden Elements..');
+      // Navigate back to the home page
+      cy.go(-1);
+      cy.url().should('include', 'http://webdriveruniversity.com/');
+      cy.wait(2000);
      });
   });
   
