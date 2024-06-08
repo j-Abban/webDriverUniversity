@@ -258,5 +258,20 @@ describe('WebDriverUniversity', () => {
       cy.go(-1);
       cy.url().should('include', 'http://webdriveruniversity.com/');
      });
+
+     it('should navigate to AUTOCOMPLETE TEXTFIELD', () => {
+      // Click on the AUTOCOMPLETE TEXTFIELD
+      cy.get('#autocomplete-textfield').invoke('removeAttr', 'target').click();
+      // Wait for new window to open and switch to it
+      cy.window().then(win => {
+      cy.stub(win, 'open').as('windowOpen');
+      });
+      // Assert the url and other elements on the page
+      cy.url().should('include','/Autocomplete-TextField/autocomplete-textfield.html');
+      cy.get('.section_header').should('have.text','Autocomplete TextField');
+      // Navigates back to the home page
+      cy.go(-1);
+      cy.url().should('include', 'http://webdriveruniversity.com/');
+     });
   });
   
