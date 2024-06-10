@@ -4,8 +4,8 @@ describe('webDriverUniversity', () => {
     before(() => {
         // Visit the WebDriverUniversity url
         cy.visit('/');
-        // Assert that you are on the home page
-        cy.url().should('include', '/webdriveruniversity');
+        // Assert that the url is correct
+        cy.url().should('include', 'http://webdriveruniversity.com/');
     });
 
     it('should not login', () => {

@@ -2,8 +2,10 @@ describe('Navigation to Contact Us Page Test', () => {
     beforeEach(() => {
     // Visit the website
       cy.visit('/');
-  
-    });
+    // Assert that the url is correct
+    cy.url().should('eq', 'http://webdriveruniversity.com/');
+    }); 
+
     it('Should navigate to Contact Us page, fill the Form and Submit', () => {
       // Click on the Contact Us link
       cy.get('#contact-us').invoke('removeAttr', 'target').click();
@@ -30,9 +32,8 @@ describe('Navigation to Contact Us Page Test', () => {
 
       // Navigate back to the homepage
       cy.go(-2);
-
       // Assertion to verify that we are back on the homepage
-      cy.url().should('eq','/');
+      cy.url().should('eq','http://webdriveruniversity.com/');
       cy.wait(3000);
     });
 
@@ -62,7 +63,7 @@ describe('Navigation to Contact Us Page Test', () => {
       cy.go(-1);
 
       // Assertion to verify that we are back on the homepage
-      cy.url().should('eq','/');
+      cy.url().should('eq', 'http://webdriveruniversity.com/');
   });
 });
   

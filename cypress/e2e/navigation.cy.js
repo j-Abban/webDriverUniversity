@@ -15,8 +15,8 @@ describe('WebDriverUniversity', () => {
     beforeEach(() => {
     // Visit the website
       cy.visit('/');
-      // Assert that you are on the home page
-      cy.url().should('include','/');
+      // Assert that the url is correct
+      cy.url().should('include','http://webdriveruniversity.com/');
     });
 
     it('Should navigate to CONTACT US', () => {
@@ -32,7 +32,7 @@ describe('WebDriverUniversity', () => {
       // navigate back to the home page
       cy.go(-1);
       // Assert that you are on the home page
-      cy.url().should('include','/');
+      cy.url().should('eq','http://webdriveruniversity.com/');
       cy.wait(2000);
      });
 
@@ -47,7 +47,7 @@ describe('WebDriverUniversity', () => {
       // navigate back to the home page
       cy.go(-1);
       // Assert that you are on the home page
-      cy.url().should('include','/');
+      cy.url().should('eq','http://webdriveruniversity.com/');
       cy.wait(2000);
     });
 
@@ -65,7 +65,7 @@ describe('WebDriverUniversity', () => {
       // navigate back to the home page
       cy.go(-1);
       // Assert that you are on the home page
-      cy.url().should('include','/');
+      cy.url().should('eq','http://webdriveruniversity.com/');
       cy.wait(2000);
     });
 
@@ -82,7 +82,7 @@ describe('WebDriverUniversity', () => {
      // navigate back to the home page
      cy.go(-1);
      // Assert that you are on the home page
-     cy.url().should('include','/');
+     cy.url().should('eq','http://webdriveruniversity.com/');
      cy.wait(2000);
      });
      
@@ -100,7 +100,7 @@ describe('WebDriverUniversity', () => {
       // Navigate back to the home page
       cy.go(-1);
       // Assert that you are on home page
-      cy.url().should('include','/');
+      cy.url().should('eq','http://webdriveruniversity.com/');
       cy.wait(2000);
     });
 
@@ -118,7 +118,7 @@ describe('WebDriverUniversity', () => {
      // Navigate back to the home page
      cy.go(-1);
      // Assert that you are on home page
-     cy.url().should('include','/');
+     cy.url().should('eq','http://webdriveruniversity.com/');
      cy.wait(2000);
      });
 
@@ -136,7 +136,7 @@ describe('WebDriverUniversity', () => {
       // Navigate back to the home page
       cy.go(-1);
       // Assert that you are on home page
-      cy.url().should('include','/');
+      cy.url().should('eq','http://webdriveruniversity.com/');
       cy.wait(2000);
      });
 
@@ -155,7 +155,7 @@ describe('WebDriverUniversity', () => {
      // Navigate back to the home page
      cy.go(-1);
      // Assert that you are on the home page
-     cy.url().should('include','/');
+     cy.url().should('eq','http://webdriveruniversity.com/');
      cy.wait(2000);
      });
 
@@ -172,7 +172,7 @@ describe('WebDriverUniversity', () => {
       cy.get('#main-header').should('have.text', 'The Key to Success is to take massive ACTION!');
       // Navigate back to the home page
       cy.go(-1);
-      cy.url().should('include', '/');
+      cy.url().should('eq', 'http://webdriveruniversity.com/');
       cy.wait(2000);
      });
 
@@ -189,7 +189,7 @@ describe('WebDriverUniversity', () => {
      cy.get('#main-header').should('include.text', 'Just Scrolling Around!');
      // Navigate back to the home page
      cy.go(-1);
-     cy.url().should('include', '/');
+     cy.url().should('eq', 'http://webdriveruniversity.com/');
      cy.wait(2000);
      });
 
@@ -206,7 +206,7 @@ describe('WebDriverUniversity', () => {
      cy.get('h1').should('have.text', 'Annoying Popup & Alerts!');
      // Navigate back to the home page
      cy.go(-1);
-     cy.url().should('include', '/');
+     cy.url().should('eq', 'http://webdriveruniversity.com/');
      cy.wait(2000);
      });
      
@@ -222,7 +222,7 @@ describe('WebDriverUniversity', () => {
      cy.get('#nav-title').should('have.text','WebdriverUniversity.com (IFrame)');
         // Navigate back to the home page
      cy.go(-1);
-     cy.url().should('include', '/');
+     cy.url().should('eq', 'http://webdriveruniversity.com/');
      cy.wait(2000);
      });
 
@@ -239,7 +239,7 @@ describe('WebDriverUniversity', () => {
       cy.get('#main-header').should('include.text', 'Hidden Elements..');
       // Navigate back to the home page
       cy.go(-1);
-      cy.url().should('include', '/');
+      cy.url().should('eq', 'http://webdriveruniversity.com/');
       cy.wait(2000);
      });
 
@@ -256,7 +256,7 @@ describe('WebDriverUniversity', () => {
       cy.get('#main-header').should('include.text','Data, Tables & Button States');
       // Navigates back to the home page
       cy.go(-1);
-      cy.url().should('include', '/');
+      cy.url().should('eq', 'http://webdriveruniversity.com/');
      });
 
      it('should navigate to AUTOCOMPLETE TEXTFIELD', () => {
@@ -271,7 +271,7 @@ describe('WebDriverUniversity', () => {
       cy.get('.section_header').should('have.text','Autocomplete TextField');
       // Navigates back to the home page
       cy.go(-1);
-      cy.url().should('include', '/');
+      cy.url().should('eq', 'http://webdriveruniversity.com/');
      });
 
      it('should navigate to FILE UPLOAD', () => {
@@ -287,7 +287,7 @@ describe('WebDriverUniversity', () => {
       cy.get('#main-header').should('include.text','File Upload');
       // Navigates back to the home page
       cy.go(-1);
-      cy.url().should('include', '/');
+      cy.url().should('eq', 'http://webdriveruniversity.com/');
       cy.wait(2000);
      });
 
@@ -304,7 +304,7 @@ describe('WebDriverUniversity', () => {
       cy.get('div#main-header > h1').should('have.text', 'Datepicker');
       // Navigates back to the home page
       cy.go(-1);
-      cy.url().should('include', '/');
+      cy.url().should('eq', 'http://webdriveruniversity.com/');
      });
   });
   
