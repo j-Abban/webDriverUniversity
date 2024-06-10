@@ -299,7 +299,7 @@ describe('WebDriverUniversity', () => {
       cy.stub(win, 'open').as('windowOpen');
       });
       // Assert the url and other elements on the page
-      cy.url().should('include', '/File-Upload/index.html');
+      cy.url().should('include', '/Datepicker/index.html');
       cy.get('.navbar-brand#nav-title').should('have.text','WebdriverUniversity.com (Datepicker)');
       cy.get('div#main-header > h1').should('have.text', 'Datepicker');
       // Navigates back to the home page
