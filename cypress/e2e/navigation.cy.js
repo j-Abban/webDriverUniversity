@@ -41,7 +41,7 @@ describe('WebDriverUniversity', () => {
       cy.get('#login-portal').invoke('removeAttr', 'target').click();
       // Wait for the new window to open and switch to it
       cy.window().then(win => {
-        cy.stub(win, 'open').as('windowOpen');
+      cy.stub(win, 'open').as('windowOpen');
       });
       cy.url().should('include', '/Login-Portal/index.html');
       // navigate back to the home page
