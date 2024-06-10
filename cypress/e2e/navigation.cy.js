@@ -273,5 +273,22 @@ describe('WebDriverUniversity', () => {
       cy.go(-1);
       cy.url().should('include', 'http://webdriveruniversity.com/');
      });
+
+     it('should navigate to FILE UPLOAD', () => {
+      // Click on the FILE UPLOAD
+      cy.get('#file-upload').invoke('removeAttr', 'target').click();
+      // Wait for new window to open and switch to it
+      cy.window().then(win => {
+      cy.stub(win, 'open').as('windowOpen');  
+      });
+      // Assert the url and other elements on the page
+      cy.url().should('include','/File-Upload/index.html');
+      cy.get('#nav-title').should('have.text','WebdriverUniversity.com (File Upload)');
+      cy.get('#main-header').should('include.text','File Upload');
+      // Navigates back to the home page
+      cy.go(-1);
+      cy.url().should('include', 'http://webdriveruniversity.com/');
+      cy.wait(2000);
+     });
   });
   
