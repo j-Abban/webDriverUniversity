@@ -290,5 +290,21 @@ describe('WebDriverUniversity', () => {
       cy.url().should('include', 'http://webdriveruniversity.com/');
       cy.wait(2000);
      });
+
+     it('should navigate to DATEPICKER', () =>{
+      // Click on the DATEPICKER
+      cy.get('#datepicker').invoke('removeAttr', 'target').click();
+      // Wait for the new window to open and switdh to it
+      cy.window().then(win => {
+      cy.stub(win, 'open').as('windowOpen');
+      });
+      // Assert the url and other elements on the page
+      cy.url().should('include', '/File-Upload/index.html');
+      cy.get('.navbar-brand#nav-title').should('have.text','WebdriverUniversity.com (Datepicker)');
+      cy.get('div#main-header > h1').should('have.text', 'Datepicker');
+      // Navigates back to the home page
+      cy.go(-1);
+      cy.url().should('include', 'http://webdriveruniversity.com/');
+     });
   });
   
