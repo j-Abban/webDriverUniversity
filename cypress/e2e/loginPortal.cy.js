@@ -3,9 +3,9 @@
 describe('webDriverUniversity', () => {
     before(() => {
         // Visit the WebDriverUniversity url
-        cy.visit('http://webdriveruniversity.com/');
+        cy.visit('/');
         // Assert that you are on the home page
-        cy.url().should('include', 'http://webdriveruniversity.com/');
+        cy.url().should('include', '/webdriveruniversity');
     });
 
     it('should not login', () => {
@@ -15,11 +15,18 @@ describe('webDriverUniversity', () => {
         cy.window().then(win => {
         cy.stub(win, 'open').as('windowOpen');
     });
-    // Enter your Username
+    // The new url should include "/Login-Portal/index.html"
+    cy.url().should('include', '/Login-Portal/index.html');
+    // Enter Username
     cy.get('input#text').type('KwameAbban');
-    // Enter your Password 
+    // Enter Password 
     cy.get('input#password').type('Kw@m3.@bb@n421');
     // Click on Login
     cy.get('button#login-button').click();
+    // Handle the alert pop-up
+    cy.on('window:alert', (str) => {
+    // Assert the alert text
+    expect(str).to.equal('validation failed');    
+    })
     });
 });
