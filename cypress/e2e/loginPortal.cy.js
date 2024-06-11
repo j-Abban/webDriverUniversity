@@ -27,6 +27,6 @@ describe('webDriverUniversity', () => {
     cy.on('window:alert', (str) => {
     // Assert the alert text
     expect(str).to.equal('validation failed');    
-    })
+    });
     });
 });
