@@ -33,7 +33,7 @@ beforeEach(() => {
   cy.get('#main-header').should('include.text', 'Lets Get Clicking!');
 });
 
-it('should Click on WebElement Click', () =>{
+it('should Click on "WebElement Click"', () =>{
   // Assert that there is "WebElement Click" text on the page
   cy.get('div:nth-of-type(1) > .thumbnail > h2').should('have.text', 'WebElement Click');
   // Click on the "CLICK ME!" button
