@@ -37,7 +37,6 @@ it('should Click on WebElement Click', () =>{
   // Assert that there is "WebElement Click" text on the page
   cy.get('div:nth-of-type(1) > .thumbnail > h2').should('have.text', 'WebElement Click');
   // Click on the "CLICK ME!" button
-  // Click on the "CLICK ME!" button
   cy.get('#button1 > p').click();
   cy.wait(2000);
 
@@ -54,7 +53,8 @@ it('should Click on WebElement Click', () =>{
 it('should click on JavaScipt Click', () =>{
     // Assert that there is "JavaScript Click" text on the page
   cy.get('div:nth-of-type(2) > .thumbnail > h2').should('have.text', 'JavaScript Click');
-  // Click on the "CLICK ME!" button
+
+  // Click on the "CLICK ME!!" button
   cy.get('div:nth-of-type(2) > .thumbnail > .caption > .btn.btn-default.btn-lg.dropdown-toggle').click();
   cy.wait(2000);
   // Verify the modal content and close the modal
@@ -64,6 +64,21 @@ it('should click on JavaScipt Click', () =>{
   // Close the alert by clicking "Close"
   cy.on('window:confirm', () => true);
   cy.get('.modal-dialog.modal-md .btn.btn-default').click();
+});
+
+it('should click on Action Move & Click', () =>{
+    // Assert that there is "JavaScript Click" text on the page
+  cy.get('div:nth-of-type(3) > .thumbnail > h2').should('have.text', 'Action Move & Click');
+
+  // Click on the "CLICK ME!!!" button
+  cy.get('div:nth-of-type(3) > .thumbnail > .caption > .btn.btn-default.btn-lg.dropdown-toggle').trigger('mouseover').click();
   cy.wait(2000);
+  // Verify the modal content and close the modal
+  cy.get('div#myModalMoveClick > .modal-dialog.modal-sm .modal-title').should('include.text', 'Well done! the Action Move & Click can become very useful!');
+  cy.get('div#myModalMoveClick > .modal-dialog.modal-sm p').should('include.text', 'Advanced user interactions (API) has been developed to enable you to perform more complex interactions such as:');
+
+  // Close the alert by clicking "Close"
+  cy.on('window:confirm', () => true);
+  cy.get('#myModalMoveClick > .modal-dialog > .modal-content > .modal-footer > .btn').click();
 });
 });
